@@ -1,0 +1,140 @@
+/* Header */
+
+#navbar{
+    width:100%
+}
+
+ #navbar ul {
+    margin-left: 30%;
+    margin-right:30%;
+    margin-bottom: 50%;
+    padding: 5px;
+	list-style-type: none;
+	text-align: center;
+	background-color: #FFC0CB;
+	}
+
+#navbar ul li {
+	display: inline;
+	}
+
+#navbar ul li a {
+	text-decoration: none;
+	padding: .2em 1em;
+	color: #fff;
+	}
+
+#navbar ul li a:hover {
+	color: #000;
+	background-color: #fff;
+	}
+
+#petalContainer
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+body {
+
+    background-image: url(images/flowerbackground.jpg);
+ /*image*/
+    background-position: top;
+/* center the image*/
+    background-size: cover;
+/* cover the entire window*/
+    background-repeat: no-repeat;
+}
+
+audio{
+    display:none;
+}
+
+#roselady
+{
+    margin-top: 200px;
+    margin-bottom: 50px;
+}
+
+#signature
+{
+   margin-top: 50px;
+   margin-bottom: 50px;
+}
+
+/* This CSS rule is applied to all div elements in the petalContainer div.
+   It styles and animates each petalDiv.
+*/
+#petalContainer > div
+{
+    position: absolute;
+
+    /* We use the following properties to apply the fade and drop animations to each petal.
+       Each of these properties takes two values. These values respectively match a setting
+       for fade and drop.
+    */
+    -webkit-animation-iteration-count: infinite, infinite;
+    -webkit-animation-direction: normal, normal;
+    -webkit-animation-timing-function: linear, ease-in;
+}
+
+/* This CSS rule is applied to all img elements directly inside div elements which are
+   directly inside the petalContainer div. In other words, it matches the 'img' elements
+   inside the petalDivs which are created in the createApetal() function.
+*/
+#petalContainer > div > img {
+     position: absolute;
+     width: auto;
+     height: auto;
+
+    /* We use the following properties to adjust the clockwiseSpin or counterclockwiseSpinAndFlip
+       animations on each petal.
+       The createApetal function in the petal.js file determines whether a petal has the
+       clockwiseSpin or counterclockwiseSpinAndFlip animation.
+    */
+     -webkit-animation-iteration-count: infinite;
+     -webkit-animation-direction: alternate;
+     -webkit-animation-timing-function: ease-in-out;
+     -webkit-transform-origin: 50% -100%;
+}
+
+
+/* Hides a petal towards the very end of the animation */
+@-webkit-keyframes fade
+{
+    /* Show a petal while into or below 95 percent of the animation and hide it, otherwise */
+    0%   { opacity: 1; }
+    95%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* Makes a petal fall from -300 to 600 pixels in the y-axis */
+@-webkit-keyframes drop
+{
+    /* Move a petal to -300 pixels in the y-axis at the start of the animation */
+    0%   { -webkit-transform: translate(0px, -50px); }
+    /* Move a petal to 600 pixels in the y-axis at the end of the animation */
+    100% { -webkit-transform: translate(0px, 650px); }
+}
+
+/* Rotates a petal from -50 to 50 degrees in 2D space */
+@-webkit-keyframes clockwiseSpin
+{
+    /* Rotate a petal by -50 degrees in 2D space at the start of the animation */
+    0%   { -webkit-transform: rotate(-50deg); }
+    /*  Rotate a petal by 50 degrees in 2D space at the end of the animation */
+    100% { -webkit-transform: rotate(50deg); }
+}
+
+
+/* Flips a petal and rotates it from 50 to -50 degrees in 2D space */
+@-webkit-keyframes counterclockwiseSpinAndFlip
+{
+    /* Flip a petal and rotate it by 50 degrees in 2D space at the start of the animation */
+    0%   { -webkit-transform: scale(-1, 1) rotate(50deg); }
+    /* Flip a petal and rotate it by -50 degrees in 2D space at the end of the animation */
+    100% { -webkit-transform: scale(-1, 1) rotate(-50deg); }
+}
+
+

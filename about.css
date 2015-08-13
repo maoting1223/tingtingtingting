@@ -1,0 +1,83 @@
+
+
+body{
+    background-color: #1266c4;
+}
+
+
+/* This CSS rule is applied to all div elements in the dandeContainer div.
+   It styles and animates each dandeDiv.
+*/
+#dandeContainer > div
+{
+    position: absolute;
+
+    /* We use the following properties to apply the fade and drop animations to each dande.
+       Each of these properties takes two values. These values respectively match a setting
+       for fade and drop.
+    */
+    -webkit-animation-iteration-count: infinite, infinite;
+    -webkit-animation-direction: normal, normal;
+    -webkit-animation-timing-function: linear, ease-in;
+}
+
+/* This CSS rule is applied to all img elements directly inside div elements which are
+   directly inside the dandeContainer div. In other words, it matches the 'img' elements
+   inside the dandeDivs which are created in the createAdande() function.
+*/
+#dandeContainer > div > img {
+     position: absolute;
+     width: auto;
+     height: auto;
+
+    /* We use the following properties to adjust the clockwiseSpin or counterclockwiseSpinAndFlip
+       animations on each dande.
+       The createAdande function in the dande.js file determines whether a dande has the
+       clockwiseSpin or counterclockwiseSpinAndFlip animation.
+    */
+     -webkit-animation-iteration-count: infinite;
+     -webkit-animation-direction: alternate;
+     -webkit-animation-timing-function: ease-in-out;
+     -webkit-transform-origin: 50% -100%;
+}
+
+
+/* Hides a dande towards the very end of the animation */
+@-webkit-keyframes fade
+{
+    /* Show a dande while into or below 95 percent of the animation and hide it, otherwise */
+    0%   { opacity: 1; }
+    95%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* Makes a dande fall from  600 to -300 pixels in the y-axis */
+@-webkit-keyframes drop
+{
+    /* Move a dande to 650 pixels in the y-axis at the start of the animation */
+    0%   { -webkit-transform: translate(0px, 650px); }
+    /* Move a dande to -300 pixels in the y-axis at the end of the animation */
+    100% { -webkit-transform: translate(0px, -50px); }
+}
+
+/* Rotates a dande from -50 to 50 degrees in 2D space */
+@-webkit-keyframes clockwiseSpin
+{
+    /* Rotate a dande by -50 degrees in 2D space at the start of the animation */
+    0%   { -webkit-transform: rotate(-50deg); }
+    /*  Rotate a dande by 50 degrees in 2D space at the end of the animation */
+    100% { -webkit-transform: rotate(50deg); }
+}
+
+
+/* Flips a dande and rotates it from 50 to -50 degrees in 2D space */
+@-webkit-keyframes counterclockwiseSpinAndFlip
+{
+    /* Flip a dande and rotate it by 50 degrees in 2D space at the start of the animation */
+    0%   { -webkit-transform: scale(-1, 1) rotate(50deg); }
+    /* Flip a dande and rotate it by -50 degrees in 2D space at the end of the animation */
+    100% { -webkit-transform: scale(-1, 1) rotate(-50deg); }
+}
+
+
